@@ -20,7 +20,7 @@ public class ProfileController {
     @Autowired
     private ProfileService service;
      
-    @GetMapping("/profile")
+    @GetMapping("/")
     public ModelAndView findAll() {
          
         ModelAndView mv = new ModelAndView("profile");
@@ -30,7 +30,7 @@ public class ProfileController {
          
         return mv;
     }
-     
+    
     @GetMapping("/add")
     public ModelAndView add(Profile profile) {
         ModelAndView mv = new ModelAndView("/profileAdd");
