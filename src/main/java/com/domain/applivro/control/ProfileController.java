@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,21 +20,21 @@ public class ProfileController {
     @Autowired
     private ProfileService service;
      
-    @GetMapping("/")
+    @GetMapping("/profile")
     public ModelAndView findAll() {
          
-        ModelAndView mv = new ModelAndView("/profile");
-        mv.addObject("posts", service.findAll());
+        ModelAndView mv = new ModelAndView("profile");
+        mv.addObject("profiles", service.findAll());
+        
+        service.teste();
          
         return mv;
     }
      
     @GetMapping("/add")
     public ModelAndView add(Profile profile) {
-         
-        ModelAndView mv = new ModelAndView("/postAdd");
+        ModelAndView mv = new ModelAndView("/profileAdd");
         mv.addObject("profile", profile);
-         
         return mv;
     }
      

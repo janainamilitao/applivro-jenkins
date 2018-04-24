@@ -159,4 +159,10 @@ public class Profile {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", name=" + name + ", email=" + email + ", dateOfBirth=" + dateOfBirth
+				+ ", postalCode=" + postalCode + ", ipAddress=" + ipAddress + "]";
+	}
 }

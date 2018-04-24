@@ -19,7 +19,7 @@ public class ProfileService {
     }
      
     public Profile findOne(Long id) {
-        return repository.findById(id).get();
+        return repository.findById(id).orElse(null);
     }
      
     public Profile save(Profile post) {
@@ -28,5 +28,14 @@ public class ProfileService {
      
     public void delete(Profile profile) {
         repository.delete(profile);
+    }
+    
+    public void delete(Long profile) {
+        repository.deleteById(profile);
+    }
+    
+    public void teste() {
+    	Profile pro = repository.findByEmail("jana@email.com");
+    	System.out.println(pro);
     }
 }

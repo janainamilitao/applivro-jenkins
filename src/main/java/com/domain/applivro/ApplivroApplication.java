@@ -1,20 +1,30 @@
 package com.domain.applivro;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@RestController
-@EnableAutoConfiguration
+@SpringBootApplication
 public class ApplivroApplication {
-
-    @RequestMapping("/")
-    String home() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ApplivroApplication.class, args);
     }
+    
+    /*@Bean
+    public CommandLineRunner test(ProfileService service) {
+    	return new CommandLineRunner() {
+			
+			@Override
+			public void run(String... args) throws Exception {
+				Profile pro = new Profile();
+				pro.setName("Profile");
+				pro.setEmail("jana@email.com");
+				pro.setIpAddress("192.168.0.1");
+				pro.setDateOfBirth(new Date());
+				pro.setPostalCode("58000000");
+				service.save(pro);
+			}
+		};
+    }*/
+    
 }

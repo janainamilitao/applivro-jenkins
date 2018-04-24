@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.domain.applivro.model.Profile;
 
 @Repository
-public interface ProfileRepository extends JpaRepository<Profile, Long> { }
+public interface ProfileRepository extends JpaRepository<Profile, Long> {
+	
+	public Profile findByEmail(String email);
+	
+}
