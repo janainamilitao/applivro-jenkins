@@ -24,7 +24,7 @@ public class ProfileController {
     public ModelAndView findAll() {
          
         ModelAndView mv = new ModelAndView("profile");
-        mv.addObject("profiles", service.findAll());
+        mv_.addObject("profiles", service.findAll());
         
         service.teste();
          
