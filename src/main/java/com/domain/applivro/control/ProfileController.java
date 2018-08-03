@@ -32,16 +32,25 @@ public class ProfileController {
     }
     
     @GetMapping("/add")
+    public ModelAndView addProfile(Profile profile) {
+          ModelAndView mv = add(profile);
+          mv.addObject("title", "Create Profile");
+          return mv;
+    }
+     
+   
     public ModelAndView add(Profile profile) {
         ModelAndView mv = new ModelAndView("/profileAdd");
         mv.addObject("profile", profile);
         return mv;
     }
      
+     
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id) {
-         
-        return add(service.findOne(id));
+          ModelAndView mv = add(service.findOne(id));
+          mv.addObject("title", "Update Profile");
+          return mv;
     }
      
     @GetMapping("/delete/{id}")
