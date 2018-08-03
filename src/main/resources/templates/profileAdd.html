@@ -11,7 +11,7 @@
 <body>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <strong>Create Profile</strong>
+            <strong><span th:text="${title}" /></strong>
         </div>
         <div class="panel-body">
             <form class="form-horizontal" th:object="${profile}" th:action="@{/save}" method="POST" style="margin: 10px">
