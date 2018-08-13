@@ -5,7 +5,7 @@
 
 	<groupId>com.domain</groupId>
 	<artifactId>applivro</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>applivro</name>
@@ -23,16 +23,20 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	<!-- Configuração do repositório Nexus -->
+	 <distributionManagement>
+	    <repository>
+	      <id>releases</id>
+	      <url>http://192.168.56.101:8081/repository/empresa_teste/</url>
+	    </repository>
+  	</distributionManagement>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -63,6 +67,21 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Dependência para análise de código -->
+		<dependency>
+		    <groupId>org.codehaus.sonar</groupId>
+		    <artifactId>sonar-plugin-api</artifactId>
+		    <version>5.1</version>
+		</dependency>
+		
+		<!-- Dependência para deploy do artefato no Nexus -->
+		<dependency>
+		    <groupId>org.sonatype.nexus</groupId>
+		    <artifactId>nexus-plugin-api</artifactId>
+		    <version>3.13.0-01</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
