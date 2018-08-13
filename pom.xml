@@ -70,9 +70,9 @@
 		
 		<!-- Dependência para análise de código -->
 		<dependency>
-		    <groupId>org.codehaus.sonar</groupId>
+		    <groupId>org.sonarsource.sonarqube</groupId>
 		    <artifactId>sonar-plugin-api</artifactId>
-		    <version>5.1</version>
+		    <version>7.2.1</version>
 		</dependency>
 		
 		<!-- Dependência para deploy do artefato no Nexus -->
