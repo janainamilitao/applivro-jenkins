@@ -38,11 +38,6 @@ public class Profile {
 	@Column(nullable = false, length = 50)
 	private String ipAddress;
 	
-	
-	 public Profile() {
-		 
-	 }
-
 
 	public String getName() {
 		return name;
@@ -152,11 +147,9 @@ public class Profile {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (postalCode == null) {
-			if (other.postalCode != null)
-				return false;
-		} else if (!postalCode.equals(other.postalCode))
-			return false;
+		if (postalCode == null) { 
+			if (other.postalCode != null) return false;
+		} else if (!postalCode.equals(other.postalCode)) return false;
 		return true;
 	}
 

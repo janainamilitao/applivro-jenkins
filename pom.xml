@@ -24,14 +24,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
-	<!-- Configuração do repositório Nexus -->
-	 <distributionManagement>
-	    <repository>
-	      <id>releases</id>
-	      <url>http://192.168.56.101:8081/repository/empresa_teste/</url>
-	    </repository>
-  	</distributionManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,36 +44,25 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- Ativa as  migrações com banco de dados -->
+		<!-- <dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		</dependency> -->
+		
+		
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- Dependência para análise de código -->
-		<dependency>
-		    <groupId>org.sonarsource.sonarqube</groupId>
-		    <artifactId>sonar-plugin-api</artifactId>
-		    <version>7.2.1</version>
-		</dependency>
-		
-		<!-- Dependência para deploy do artefato no Nexus -->
-		<dependency>
-		    <groupId>org.sonatype.nexus</groupId>
-		    <artifactId>nexus-plugin-api</artifactId>
-		    <version>3.13.0-01</version>
-		</dependency>
-		
 	</dependencies>
 
 	<build>
