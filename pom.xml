@@ -5,7 +5,7 @@
 
 	<groupId>com.domain</groupId>
 	<artifactId>applivro</artifactId>
-	<version>0.2.0</version>
+	<version>0.2.3</version>
 	<packaging>jar</packaging>
 
 	<name>applivro</name>
@@ -24,6 +24,14 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
+	<!-- Configuração do repositório Nexus -->
+	 <distributionManagement>
+	    <repository>
+	      <id>empresa_teste</id>
+	      <url>http://192.168.56.101:8081/repository/empresa_teste/</url>
+	    </repository>
+  	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
