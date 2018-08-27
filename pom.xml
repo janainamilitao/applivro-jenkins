@@ -53,13 +53,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		<!-- Ativa as  migrações com banco de dados -->
-		<!-- <dependency>
-		    <groupId>org.flywaydb</groupId>
-		    <artifactId>flyway-core</artifactId>
-		</dependency> -->
-		
-		
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -71,6 +64,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Dependência para análise de código -->
+		<dependency>
+		    <groupId>org.sonarsource.sonarqube</groupId>
+		    <artifactId>sonar-plugin-api</artifactId>
+		    <version>7.2.1</version>
+		</dependency>
+		
+		<!-- Dependência para deploy do artefato no Nexus -->
+		<dependency>
+		    <groupId>org.sonatype.nexus</groupId>
+		    <artifactId>nexus-plugin-api</artifactId>
+		    <version>3.13.0-01</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
