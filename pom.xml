@@ -53,12 +53,11 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		<!-- Ativa as  migrações com banco de dados -->
-		<!-- <dependency>
-		    <groupId>org.flywaydb</groupId>
-		    <artifactId>flyway-core</artifactId>
-		</dependency> -->
-		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<scope>compile</scope>
+		</dependency>		
 		
 		<dependency>
 			<groupId>org.postgresql</groupId>
