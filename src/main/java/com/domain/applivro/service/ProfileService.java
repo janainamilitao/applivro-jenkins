@@ -32,11 +32,12 @@ public class ProfileService {
     	
     	Optional<Profile> optional = repository.findByEmail(post.getEmail());
     	
-    	if(optional.isPresent()) {
+    	if(optional.isPresent() && optional.get().getId()!=null) {
     		throw new EmailUniqueException();
     	}
     	
-        return repository.saveAndFlush(post);
+        return repository.save(post);
+       
     }
      
     public void delete(Profile profile) {

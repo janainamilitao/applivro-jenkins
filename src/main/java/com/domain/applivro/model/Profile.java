@@ -1,5 +1,8 @@
 package com.domain.applivro.model;
 
+
+
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,31 +14,40 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name ="profile")
-public class Profile {
+public class Profile  implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @SequenceGenerator(name = "profile_seq", sequenceName = "profile_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_seq")
     private Long id;
 	
 	@Column(nullable = false, length = 50)
+	@NotBlank(message = "Name é um campo obrigatório.")
 	private String name;
 	
 	@Column(nullable = false, length = 50)
+	@NotBlank(message = "Email é um campo obrigatório.")
 	private String email;
 	
-	@Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+    //@NotBlank(message = "Date of Birth é um campo obrigatório.")
     private Date dateOfBirth;
 	
 	@Column(nullable = false, length = 50)
+	@NotBlank(message = "Postal Code é um campo obrigatório.")
 	private String postalCode;
 	
 	@Column(nullable = false, length = 50)
+	@NotBlank(message = "IP Address é um campo obrigatório.")
 	private String ipAddress;
 	
 
@@ -67,7 +79,6 @@ public class Profile {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;
