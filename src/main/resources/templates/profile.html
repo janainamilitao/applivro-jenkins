@@ -12,7 +12,7 @@
 <body>
 	<div class="panel panel-info">
         <div class="panel-heading">
-            <strong>Livro Jenkins - Aplicação Java - Spring Bootvvvv</strong>
+            <strong>Livro Jenkins - Aplicação Java - Spring Boot</strong>
         </div>
         
         <div class="panel-body">
@@ -26,7 +26,7 @@
 
     <div class="panel panel-success">
         <div class="panel-heading">
-            <strong>Profile</strong>
+            <strong>Profile Listing</strong>
         </div>
         
         <div class="panel-footer">
@@ -43,7 +43,7 @@
                             <th>Age</th>
                             <th>Cógigo Postal</th>
                             <th>IP</th>
-                            <th></th>
+                            <th style="text-align: center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +54,8 @@
                             <td th:text="${profile.age}"></td>
                             <td th:text="${profile.postalCode}"></td>
                             <td th:text="${profile.ipAddress}"></td>
-                            <td>
-                                <div class="btn-group pull-right">
+                            <td style="text-align: center">
+                                <div class="btn-group">
                                     <a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${profile.id})}" >Editar</a>
                                     <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${profile.id})}">Excluir</a>
                                </div>
@@ -65,9 +65,9 @@
                 </table>
             </div>
         </div>
-        <div class="panel-footer">
+        <!-- <div class="panel-footer">
             <a class="btn btn-sm btn-success" th:href="@{/add/}" >Adicionar</a>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
