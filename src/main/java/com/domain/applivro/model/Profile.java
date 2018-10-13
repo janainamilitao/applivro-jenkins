@@ -3,7 +3,6 @@ package com.domain.applivro.model;
 
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name ="profile")
 public class Profile  implements Serializable{
@@ -29,25 +23,19 @@ public class Profile  implements Serializable{
     private Long id;
 	
 	@Column(nullable = false, length = 50)
-	@NotBlank(message = "Name é um campo obrigatório.")
 	private String name;
 	
-	@Column(nullable = false, length = 50)
-	@NotBlank(message = "Email é um campo obrigatório.")
+	@Column(nullable = false, length = 50)	
 	private String email;
 	
-	@Column
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-    //@NotBlank(message = "Date of Birth é um campo obrigatório.")
-    private Date dateOfBirth;
+	@Column(nullable = false)
+	private int age;
+	
 	
 	@Column(nullable = false, length = 50)
-	@NotBlank(message = "Postal Code é um campo obrigatório.")
 	private String postalCode;
 	
 	@Column(nullable = false, length = 50)
-	@NotBlank(message = "IP Address é um campo obrigatório.")
 	private String ipAddress;
 	
 
@@ -80,13 +68,16 @@ public class Profile  implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	
+
+
+	public int getAge() {
+		return age;
 	}
 
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 
@@ -110,11 +101,12 @@ public class Profile  implements Serializable{
 	}
 
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + age;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
@@ -133,10 +125,7 @@ public class Profile  implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Profile other = (Profile) obj;
-		if (dateOfBirth == null) {
-			if (other.dateOfBirth != null)
-				return false;
-		} else if (!dateOfBirth.equals(other.dateOfBirth))
+		if (age != other.age)
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -158,15 +147,18 @@ public class Profile  implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (postalCode == null) { 
-			if (other.postalCode != null) return false;
-		} else if (!postalCode.equals(other.postalCode)) return false;
+		if (postalCode == null) {
+			if (other.postalCode != null)
+				return false;
+		} else if (!postalCode.equals(other.postalCode))
+			return false;
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", name=" + name + ", email=" + email + ", dateOfBirth=" + dateOfBirth
-				+ ", postalCode=" + postalCode + ", ipAddress=" + ipAddress + "]";
+		return "Profile [id=" + id + ", name=" + name + ", email=" + email + ", age=" + age + ", postalCode="
+				+ postalCode + ", ipAddress=" + ipAddress + "]";
 	}
 }

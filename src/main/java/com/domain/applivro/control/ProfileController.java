@@ -4,14 +4,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.domain.applivro.model.Profile;
 import com.domain.applivro.service.ProfileService;
@@ -61,16 +58,14 @@ public class ProfileController {
     }
  
     @PostMapping("/save")
-    public ModelAndView save(@Valid Profile profile, BindingResult result, RedirectAttributes attributes, 
-    		@PathVariable("mensagem") String mensagem, Model model) throws Exception {
+    public ModelAndView save(@Valid Profile profile, BindingResult result) throws Exception {
          
         if(result.hasErrors()) {
             return add(profile);
         }
          
         service.save(profile); 
-        attributes.addAttribute("mensagem", "Profile salvo com sucesso!");
-        model.addAttribute("mensagem", mensagem);
+        
         
         return findAll();
     }

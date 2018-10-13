@@ -32,7 +32,7 @@ public class ProfileService {
     	
     	Optional<Profile> optional = repository.findByEmail(post.getEmail());
     	
-    	if(optional.isPresent() && optional.get().getId()!=null) {
+    	if(optional.isPresent() && post.getId()==null) {
     		throw new EmailUniqueException();
     	}
     	

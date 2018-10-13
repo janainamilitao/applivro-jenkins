@@ -2,7 +2,6 @@ package com.domain.applivro.service;
 
 import static org.mockito.Mockito.when;
 
-import java.util.Date;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -23,7 +22,7 @@ public class ProfileServiceTest {
 	public static final String EMAIL = "janaina@gmail.com";
 	public static final String IP = "192.168.25.01";
 	public static final String POSTAL_CODE = "58000-300";
-	public static final Date DATE_OF_BIRTH = new Date();
+	public static final int AGE = 28;
 	
 	@MockBean
 	private ProfileRepository profileRepository;
@@ -41,7 +40,7 @@ public class ProfileServiceTest {
 		profile.setEmail(EMAIL);
 		profile.setIpAddress(IP);
 		profile.setPostalCode(POSTAL_CODE);
-		profile.setDateOfBirth(DATE_OF_BIRTH);
+		profile.setAge(AGE);
 		
 		when(profileRepository.findByEmail(EMAIL)).thenReturn(Optional.empty());
 	}

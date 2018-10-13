@@ -12,7 +12,7 @@
 <body>
 	<div class="panel panel-info">
         <div class="panel-heading">
-            <strong>Livro Jenkins - Aplicação Java - Spring Boot</strong>
+            <strong>Livro Jenkins - Aplicação Java - Spring Bootvvvv</strong>
         </div>
         
         <div class="panel-body">
@@ -22,11 +22,7 @@
         </div>
         
      </div>
-     
-     <div class="alert  alert-success" >
-		<span th:text="${mensagem}"></span>
-	</div>	
-
+  
 
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -44,7 +40,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>E-mail</th>
-                            <th>Data de Nascimento</th>
+                            <th>Age</th>
                             <th>Cógigo Postal</th>
                             <th>IP</th>
                             <th></th>
@@ -55,7 +51,7 @@
                             <td th:text="${profile.id}"></td>
                             <td th:text="${profile.name}"></td>
                             <td th:text="${profile.email}"></td>
-                            <td th:text="${#dates.format(profile.dateOfBirth, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${profile.age}"></td>
                             <td th:text="${profile.postalCode}"></td>
                             <td th:text="${profile.ipAddress}"></td>
                             <td>
