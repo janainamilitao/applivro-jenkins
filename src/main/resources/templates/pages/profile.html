@@ -6,6 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Profile</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+	<link th:href="@{/css/plugins/chosen/bootstrap-chosen.css}" rel="stylesheet" />
+	<link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -30,7 +34,7 @@
         </div>
         
         <div class="panel-footer">
-            <a class="btn btn-sm btn-success" th:href="@{/add/}" >Adicionar</a>
+            <a class="btn btn-sm btn-success" th:href="@{/add/}" >New</a>
         </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -41,9 +45,9 @@
                             <th>Name</th>
                             <th>E-mail</th>
                             <th>Age</th>
-                            <th>Cógigo Postal</th>
+                            <th>Postal Code</th>
                             <th>IP</th>
-                            <th style="text-align: center">Ações</th>
+                            <th style="text-align: center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,8 +60,8 @@
                             <td th:text="${profile.ipAddress}"></td>
                             <td style="text-align: center">
                                 <div class="btn-group">
-                                    <a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${profile.id})}" >Editar</a>
-                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${profile.id})}">Excluir</a>
+                                    <a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${profile.id})}" >Edit</a>
+                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${profile.id})}">Delete</a>
                                </div>
                             </td>
                         </tr>
@@ -65,9 +69,49 @@
                 </table>
             </div>
         </div>
-        <!-- <div class="panel-footer">
-            <a class="btn btn-sm btn-success" th:href="@{/add/}" >Adicionar</a>
-        </div> -->
+     
     </div>
+    
+    
+    <!--/* Mainly scripts */-->
+	<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+
+
+
+	<script th:inline="javascript">
+	
+		$(document).ready(function(){		
+			loadToastr();
+		});
+		
+		function loadToastr( feedback ){
+			var optionsToastr = {
+					closeButton: true,
+					debug: false,
+					progressBar: true,
+					preventDuplicates: false,
+					timeOut: "7000",
+					showEasing: "swing",
+					hideEasing: "linear",
+					showMethod: "fadeIn",
+					hideMethod: "fadeOut",
+					onclick: null
+				};
+
+			var mensagens = [[${feedback}]];
+			if( mensagens == null && feedback != null ){
+				mensagens = feedback;
+			}
+
+			$.each( mensagens, function( i, v ){
+				var type = i, arr = v;
+				$.each( arr, function( a, msg ){
+					toastr[type]( msg, null, optionsToastr );
+				})
+			});
+		}
+	</script>
 </body>
 </html>
