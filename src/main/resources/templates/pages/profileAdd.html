@@ -67,7 +67,7 @@
                        <div class="form-group row">
                             <div class="col-md-4" th:classappend="${#fields.hasErrors('age')}? 'has-error'">
                                 <label>Age*</label>
-                                 <input type="number" class="form-control input-sm" th:field="*{age}" />
+                                 <input type="number" maxlength="3" class="form-control input-sm" th:field="*{age}" />
                             </div>
                         </div>                       
                         
@@ -75,14 +75,16 @@
                         <div class="form-group row">
                             <div class="col-md-4" th:classappend="${#fields.hasErrors('postalCode')}? 'has-error'">
                                 <label>Postal Code*</label>
-                                 <input type="text" class="form-control input-sm" th:field="*{postalCode}" />
+                                 <input maxlength="9" placeholder="00000-000" type="text" onkeypress="mascara(this, '#####-###')"
+                                        class="form-control input-sm" th:field="*{postalCode}" />
                             </div>
                         </div> 
                         
                         <div class="form-group row">
                             <div class="col-md-4" th:classappend="${#fields.hasErrors('ipAddress')}? 'has-error'">
                                 <label>IP*</label>
-                                <input type="text" class="form-control input-sm" th:field="*{ipAddress}" />
+                                <input  maxlength="15" placeholder="000.000.000.000" type="text" onkeypress="mascara(this, '###.###.###.###')"
+                                class="form-control input-sm" th:field="*{ipAddress}"  />
                             </div>
                         </div>                        
                     </fieldset>
@@ -100,6 +102,7 @@
 	<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+	
 
 
 
@@ -108,6 +111,7 @@
 		$(document).ready(function(){		
 			loadToastr();
 		});
+	
 		
 		function loadToastr( feedback ){
 			var optionsToastr = {
@@ -135,6 +139,15 @@
 				})
 			});
 		}
+		
+		 function mascara(t, mask){
+			 var i = t.value.length;
+			 var saida = mask.substring(1,0);
+			 var texto = mask.substring(i)
+			 if (texto.substring(0,1) != saida){
+				 t.value += texto.substring(0,1);
+			 }
+		  }
 	</script>
 </body>
 </html>

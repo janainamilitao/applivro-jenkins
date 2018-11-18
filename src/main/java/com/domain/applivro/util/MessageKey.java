@@ -9,21 +9,22 @@ public class MessageKey {
 	@AllArgsConstructor
 	public enum Error {
 
-		REQUIRED( "required.message" ),
-		INVALID( "invalid.value.message" ),
-		LENGTH( "length.message" ),
-		MIN_SIZE( "min.message" ),
-		MAX_SIZE( "max.message" ),
-		BOUND_SIZE( "bound.size.message" );
+		REQUIRED( "O valor é obrigatório" ),
+		INVALID( "O valor informado é inválido" ),
+		LENGTH( "Deve ter {0} caracteres" ),
+		MIN_SIZE( "Não deve conter menos de {0} caracteres" ),
+		MAX_SIZE( "Não deve exceder mais de {0} caracteres" ),
+		BOUND_SIZE( "Deve conter entre {0} e {1} caracteres" );
 
 		private String key;
 	}
-
+	
+	
 	@Getter
 	@AllArgsConstructor
 	public enum Success {
 
-		SUCCESS_OPERATION( "success.operation.message" );
+		SUCCESS_OPERATION( "Operação realizada com sucesso!" );
 
 		private String key;
 	}
