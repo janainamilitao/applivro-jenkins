@@ -92,7 +92,8 @@ public class WebMessage {
 
 	@SuppressWarnings( "unchecked" )
 	private Map<String, List<String>> getFeedbackToFlash( RedirectAttributes attributes ) {
-		Optional<Map<String, ?>> optional = ( Optional<Map<String, ?>> ) Optional.ofNullable( attributes.getFlashAttributes().get( FEEDBACK_TOASTR ) );
+		Optional<Map<String, List<String>>> optional = ( Optional<Map<String, List<String>>> ) 
+				Optional.ofNullable( attributes.getFlashAttributes().get( FEEDBACK_TOASTR ) );
 		Map<String, List<String>> feedback = ( Map<String, List<String>> ) optional.orElse( new HashMap<>() );
 		return feedback;
 	}
