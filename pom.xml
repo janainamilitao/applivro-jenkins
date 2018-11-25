@@ -5,11 +5,11 @@
 
 	<groupId>com.domain</groupId>
 	<artifactId>applivro</artifactId>
-	<version>0.2.7</version>
+	<version>0.2.8</version>
 	<packaging>jar</packaging>
 
 	<name>applivro</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Application of Jenkins Book</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
