@@ -5,7 +5,7 @@
 
 	<groupId>com.domain</groupId>
 	<artifactId>applivro</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 	<packaging>jar</packaging>
 
 	<name>applivro</name>
@@ -80,6 +80,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.collections</groupId>
+		    <artifactId>google-collections</artifactId>
+		    <version>1.0-rc2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

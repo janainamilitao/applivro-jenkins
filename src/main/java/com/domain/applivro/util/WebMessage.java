@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ImmutableMap;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -89,21 +89,25 @@ public class WebMessage {
 			feedback.put( type.value, new LinkedList<>( Arrays.asList( message ) ) );
 		}
 	}
-
-	@SuppressWarnings( "unchecked" )
+	
+	
 	private Map<String, List<String>> getFeedbackToFlash( RedirectAttributes attributes ) {
-		Optional<Object> optional  = Optional.ofNullable( attributes.getFlashAttributes().get( FEEDBACK_TOASTR ) );
-		Map<String, List<String>> feedback = ( Map<String, List<String>> ) optional.orElse( new HashMap<>() );
-		return feedback;
+		  Object property = attributes.getFlashAttributes().get( FEEDBACK_TOASTR );
+		  Map<String, List<String>> feedback = new HashMap<>();
+		  if( property instanceof HashMap )
+		   feedback = ImmutableMap.<String, List<String>>builder().putAll( ( Map<? extends String, ? extends List<String>> ) property ).build();
+		  return feedback;
+	}
+	
+	private Map<String, List<String>> getFeedback(  Model attributes) {
+		  Object property = attributes.asMap().get( FEEDBACK_TOASTR );
+		  Map<String, List<String>> feedback = new HashMap<>();
+		  if( property instanceof HashMap )
+		   feedback = ImmutableMap.<String, List<String>>builder().putAll( ( Map<? extends String, ? extends List<String>> ) property ).build();
+		  return feedback;
 	}
 
-	@SuppressWarnings( "unchecked" )
-	private Map<String, List<String>> getFeedback( Model attributes ) {
-		Optional<Object> optional = Optional.ofNullable( attributes.asMap().get( FEEDBACK_TOASTR ) );
-		Map<String, List<String>> feedback = ( Map<String, List<String>> ) optional.orElse( new HashMap<>() );
-		return feedback;
-	}
-
+	
 	private void registreMessage(FeedType type, String message, Map<String, List<String>> feedback) {
 		try {
 			addFeedback( type, message, feedback );
