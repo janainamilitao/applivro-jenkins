@@ -48,7 +48,7 @@ public class ProfileController {
      
    
     public ModelAndView add(Profile profile) {
-        ModelAndView mv = new ModelAndView(PATH+"/profileAdd");
+        ModelAndView mv = new ModelAndView(PATH+"profileAdd");
         mv.addObject("profile", profile);
         return mv;
     }
@@ -73,8 +73,9 @@ public class ProfileController {
     public ModelAndView save(final Profile profile, final BindingResult result, Model model) throws Exception {
     	
     	this.validator.validate( profile, result );
-         
+         //Mensagem de erro
         if(result.hasErrors()) {
+        	//this.webMessage.addError(model, messageKey, params);
             return add(profile);
         }
          
